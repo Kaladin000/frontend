@@ -1,0 +1,15 @@
+services:
+
+  apache-dev:
+    build: ./docker/apache
+    container_name: frontend-apache-dev
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+
+    volumes:
+      - ./app/public_html:/var/www/html
+      - ./logs:/var/log/apache2/custom
+      - ./docker/apache/vhost-dev.conf:/etc/apache2/sites-available/000-default.conf
+      - ./app/config/urls.js:/config/urls.js

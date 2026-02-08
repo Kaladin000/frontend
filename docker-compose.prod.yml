@@ -1,0 +1,15 @@
+services:
+
+  apache-prod:
+    build: ./docker/apache
+    container_name: frontend-apache-prod
+    restart: always
+
+    ports:
+      - "80:80"
+
+    volumes:
+      - ./app:/var/www/html
+      - ./logs:/var/log/apache2/custom
+      - ./docker/apache/vhost-prod.conf:/etc/apache2/sites-available/000-default.conf
+      - ./app/config/urls.js:/config/urls.js
