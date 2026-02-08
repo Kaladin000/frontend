@@ -15,7 +15,14 @@ WORKDIR /var/www/html
 RUN sed -i 's/80/10000/g' /etc/apache2/ports.conf \
  && sed -i 's/:80/:10000/g' /etc/apache2/sites-available/000-default.conf
 
-RUN echo "DirectoryIndex pages/home.html" >> /etc/apache2/apache2.conf
+RUN echo '<VirtualHost *:10000>\n\
+    DocumentRoot /var/www/html\n\
+    DirectoryIndex pages/home.html\n\
+    <Directory /var/www/html>\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
 
 COPY app/public_html/ /var/www/html/
 
