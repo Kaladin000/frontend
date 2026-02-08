@@ -15,7 +15,7 @@ WORKDIR /var/www/html
 RUN sed -i 's/80/10000/g' /etc/apache2/ports.conf \
  && sed -i 's/:80/:10000/g' /etc/apache2/sites-available/000-default.conf
 
-COPY app/public_html/ /var/www/html/
+COPY . /var/www/html/
 
 EXPOSE 10000
 
