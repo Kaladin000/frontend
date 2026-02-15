@@ -12,4 +12,4 @@ services:
       - ./app:/var/www/html
       - ./logs:/var/log/apache2/custom
       - ./docker/apache/vhost-prod.conf:/etc/apache2/sites-available/000-default.conf
-      - ./app/config/urls.js:/config/urls.js
+      - ./app/config/urls.js:/var/www/html/config/urls.js

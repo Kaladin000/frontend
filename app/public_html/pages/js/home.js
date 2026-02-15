@@ -1,3 +1,4 @@
+import { apiUrl } from "../../config/urls.js";
 
 //Mostar / Ocultar el formulario de nueva película
 function showHideAddForm() {
